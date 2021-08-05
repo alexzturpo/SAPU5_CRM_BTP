@@ -26,23 +26,15 @@
                     backgroundDesign= "Solid"
                     showNavButton="{= !${device>/system/desktop} }"
                     navButtonPress=".onPressDetailBack">
-                    
-                    <l:BlockLayout background="Light">
-                        
-                        <l:BlockLayoutRow>
-                            <l:BlockLayoutCell>
-                                <Title level="H1" titleStyle="H1" text="Bienvenidos a tu portal CRM!" width="100%" textAlign="Center"/>
-                            </l:BlockLayoutCell>
-                        </l:BlockLayoutRow>
-                        <l:BlockLayoutRow>
-                            <l:BlockLayoutCell >
-                                <Image src="../img/homefondo.jpg" width="{/imageWidth}" height="30rem" />
-                            </l:BlockLayoutCell>
-                        </l:BlockLayoutRow>
-                        
 
-                        
-                    </l:BlockLayout>
+                    <l:VerticalLayout width="100%">
+                            <l:content>
+                                <VBox class="sapUiSmallMargin" width="100%" >
+                                     <Title level="H2" titleStyle="H2" text="Bienvenidos a tu portal CRM!" width="100%" />
+                                     <Image src="../img/homefondo.jpg" width="{/imageWidth}" height="30rem" />
+                                </VBox>
+                            </l:content>
+                    </l:VerticalLayout>
                 </Page>
                 <Page id="CuentasDetail"
                     title="Cuentas"
@@ -1735,8 +1727,71 @@
                     backgroundDesign= "Solid"
                     showNavButton="{= !${device>/system/desktop} }"
                     navButtonPress=".onPressDetailBack">
-
-                </Page>   
+                    <subHeader>
+                    <Toolbar>
+                        <Button type="Back" tooltip="Back"/>
+                        <ToolbarSpacer/>
+                        <Title text="Clientes" level="H3"/>
+                        <ToolbarSpacer/>
+                    </Toolbar>
+		            </subHeader>
+                    <Toolbar class="sapUiMediumMarginTop" id="toolbar0">
+			        <SearchField width="100%" placeholder="Buscar"/>
+		            </Toolbar>
+                    <List
+                        id="tableclientes"
+                        items="{/table_clientes}"
+                        headerText="Seleccione un Cliente:">
+                        <ObjectListItem
+                            title="{name}"
+                            type="Active"
+                            press="press"
+                            number="{
+                                parts:[{path:'name'},{path:'address'}],
+                                type: 'sap.ui.model.type.Currency',
+                                formatOptions: {showMeasure: false}
+                            }"
+                            numberUnit="{CurrencyCode}">
+                            <firstStatus>
+                                <ObjectStatus
+                                    text="{state}"/>
+                            </firstStatus>
+                        </ObjectListItem>
+                    </List>
+                </Page> 
+                <Page id="ProductsClientesDetail"
+                    title="Toma de Pedidos"
+                    backgroundDesign= "Solid"
+                    showNavButton="{= !${device>/system/desktop} }"
+                    navButtonPress=".onPressDetailBack">
+                    <subHeader>
+                    <Toolbar>
+                        <Button type="Back" tooltip="Back" press="backtoclientes"/>
+                        <ToolbarSpacer/>
+                        <Title text="Productos" level="H3"/>
+                        <ToolbarSpacer/>
+                    </Toolbar>
+		            </subHeader>
+                    <Toolbar class="sapUiMediumMarginTop" id="toolbar1">
+			        <SearchField width="100%" placeholder="Buscar"/>
+		            </Toolbar>
+                <List
+                    id="tableproductos"
+                    items="{/list_productos}"
+                    headerText="Productos"
+                    mode="MultiSelect"
+                    inset="false">
+                    <ObjectListItem
+                        title="{ProductName}"
+                        type="Active"
+                        press="press">
+                        <firstStatus>
+                            <ObjectStatus
+                                text="{ExtendedPrice}"/>
+                        </firstStatus>
+                    </ObjectListItem>
+                </List>
+                </Page>    
                 <Page id="ListaPreciosDetail"
                     title="Lista de Precios"
                     backgroundDesign= "Solid"
@@ -1862,14 +1917,14 @@
                                         <f:content>
                                             <core:Title text="" />
                                             <Label text="Nombre" />
-                                            <Text text="Aluminum" />
+                                            <Text text="lista de precios 202102" />
                                             <Label text="Valido desde" />
-                                            <Text text="12/3/2020 " />
+                                            <Text text="1/2/2021 " />
                                             <Label text="hasta" />
-                                            <Text text="3/20/2021" />
+                                            <Text text="28/2/2021" />
                                             <core:Title text="" />
                                             <Label text="Moneda" />
-                                            <Text text="Soles" />
+                                            <Text text="Peso Boliviano" />
                                         </f:content>
                                         <f:layoutData>
                                             <FlexItemData shrinkFactor="0" backgroundDesign="Solid" styleClass="sapContrastPlus"/>
@@ -3306,7 +3361,7 @@
                                     visibleRowCount="7"
                                     enableSelectAll="false"
                                     rows="{
-                                        path: '/table_reuniones'
+                                        path: '/table_haciendaestatus'
                                     }"
                                     threshold="15"
                                     enableBusyIndicator="true"
@@ -3319,6 +3374,27 @@
                                         </OverflowToolbar>
                                     </tab:extension>
                                     <tab:columns>
+                                        
+                                        <tab:Column
+                                            sortProperty="hacienda"
+                                            filterProperty="hacienda"
+                                            autoResizable="true"
+                                            width="11rem">
+                                            <Label text="Hacienda" />
+                                            <tab:template>
+                                                <Text text="{hacienda}" wrapping="false" />
+                                            </tab:template>
+                                        </tab:Column>
+                                         <tab:Column
+                                            sortProperty="Status"
+                                            filterProperty="Status"
+                                            autoResizable="true"
+                                            width="11rem">
+                                            <Label text="Status" />
+                                            <tab:template>
+                                                <Text text="{state}" wrapping="false" />
+                                            </tab:template>
+                                        </tab:Column>
                                         <tab:Column
                                             sortProperty="Nommbre"
                                             filterProperty="Nommbre"
@@ -3350,18 +3426,18 @@
                                             </tab:template>
                                         </tab:Column>
                                         <tab:Column
-                                            sortProperty="Enddate"
-                                            filterProperty="Enddate"
+                                            sortProperty="Cliente"
+                                            filterProperty="Cliente"
                                             autoResizable="true"
                                             width="11rem">
                                             <Label text="Cliente" />
                                             <tab:template>
-                                                <Text text="{enddate}" wrapping="false" />
+                                                <Text text="{accounts}" wrapping="false" />
                                             </tab:template>
                                         </tab:Column>
                                         <tab:Column
-                                            sortProperty="Accounts"
-                                            filterProperty="Accounts"
+                                            sortProperty="Contacto"
+                                            filterProperty="Contacto"
                                             autoResizable="true"
                                             width="11rem">
                                             <Label text="Contacto" />
@@ -3369,16 +3445,7 @@
                                                 <Text text="{telephono}" wrapping="false" />
                                             </tab:template>
                                         </tab:Column>
-                                        <tab:Column
-                                            sortProperty="Status"
-                                            filterProperty="Status"
-                                            autoResizable="true"
-                                            width="11rem">
-                                            <Label text="Status" />
-                                            <tab:template>
-                                                <Text text="{state}" wrapping="false" />
-                                            </tab:template>
-                                        </tab:Column>
+                                       
                                         
                                     </tab:columns>
                                 </tab:Table>
@@ -3438,7 +3505,7 @@
                                     visibleRowCount="7"
                                     enableSelectAll="false"
                                     rows="{
-                                        path: '/table_reuniones'
+                                        path: '/table_estadistica'
                                     }"
                                     threshold="15"
                                     enableBusyIndicator="true"
@@ -3478,17 +3545,17 @@
                                             width="11rem">
                                             <Label text="Nro. De visitas" />
                                             <tab:template>
-                                                <Text text="{accounts}" wrapping="false" />
+                                                <Text text="{visitas}" wrapping="false" />
                                             </tab:template>
                                         </tab:Column>
                                         <tab:Column
-                                            sortProperty="Distanciaruta"
-                                            filterProperty="Distanciaruta"
+                                            sortProperty="Distancia"
+                                            filterProperty="Distancia"
                                             autoResizable="true"
                                             width="11rem">
                                             <Label text="Distancia a la ruta" />
                                             <tab:template>
-                                                <Text text="{telephono}" wrapping="false" />
+                                                <Text text="{distancia}" wrapping="false" />
                                             </tab:template>
                                         </tab:Column>
                                         
@@ -3517,7 +3584,7 @@
                                     forceSelection="false"
                                     selectedKey="Seleccione"
                                     items="{
-                                        path: '/list_select',
+                                        path: '/list_visualizacion',
                                         sorter: { path: 'vendedor' }
                                     }">
                                     <core:Item key="{listId}" text="{vendedor}" />
@@ -3563,7 +3630,7 @@
                                             width="16rem">
                                             <Label text="Mora" />
                                             <tab:template>
-                                                <Text text="{startdate}" wrapping="false" />
+                                                <Text text="{mora}" wrapping="false" />
                                             </tab:template>
                                         </tab:Column>
                                         <tab:Column
@@ -3573,7 +3640,7 @@
                                             width="16rem">
                                             <Label text="Credito disponible" />
                                             <tab:template>
-                                                <Text text="{accounts}" wrapping="false" />
+                                                <Text text="{credito}" wrapping="false" />
                                             </tab:template>
                                         </tab:Column>
                                         

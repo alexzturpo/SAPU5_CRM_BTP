@@ -73,3 +73,12 @@ html.sap-desktop .sapMIBar.sapMFooter-CTX {
 .sapTntNavLIItemSelected.sapTntNavLIItem, .sapTntNavLIItemSelected .sapTntNavLIGroup, .sapTntNavLIItemSelected.sapTntNavLIGroupItem.sapTntNavLIGroupItem {
     background-color: #3d5873 !important;
 }
+
+.sapMTB-Transparent-CTX .sapMLabel.crumbArrow {
+	margin-right: 0 !important;
+}
+
+.sapMTB-Transparent-CTX .sapMText.crumbLast {
+	font-size: 0.875rem !important;
+	text-shadow: none !important;
+}

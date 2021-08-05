@@ -9,7 +9,7 @@ sap.ui.define([
 
 		return Controller.extend("salescloud.controller.Home", {
 			onInit: function () {
-
+            
             },
             //  saltos de paneles 
                 //navegador de clientes
@@ -118,6 +118,21 @@ sap.ui.define([
 				Log.info("SplitApp object can't be found");
 			}
 			return result;
-		    }
+            },
+            backtoclientes: function(){
+                this.getSplitContObj().to(this.createId("TomaPedidosDetail"));
+            },
+		press: function (evt) {
+            var data = {};
+            data.context = evt.getSource().getBindingContext();
+            var selectedIndex = data.context.sPath.split("/")[2];
+            console.log(data.context);
+            console.log(selectedIndex);
+            this.getSplitContObj().to(this.createId("ProductsClientesDetail"));
+            var products=this.getView().getModel().getProperty("/list_clientes/" + selectedIndex  + "/products");
+            console.log(products);
+
+        }
+                
 		});
 	});
