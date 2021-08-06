@@ -3,11 +3,16 @@
     align-items: center;
     padding: 25px !important;
 }
+.cuerpo{
+    height: 94vh;
+}
 /* Enter your custom styles here */
 .sapMBarTitleAlignAuto .sapMBarPH {
     justify-content: center !important;
 }
-
+.sapTntToolHeader.sapMTB {
+    background-color: #3d5873 !important;
+}
 .sapMBarContainer {
     background: #354a5f !important;
 }
