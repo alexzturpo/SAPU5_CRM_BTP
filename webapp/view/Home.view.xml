@@ -1776,6 +1776,7 @@
                         </ObjectListItem>
                     </List>
                 </Page> 
+
                 <Page id="ProductsClientesDetail"
                     title="Toma de Pedidos"
                     backgroundDesign= "Solid"
@@ -1787,240 +1788,325 @@
                         <ToolbarSpacer/>
                         <Title text="Productos" level="H3"/>
                         <ToolbarSpacer/>
+                        <Button class="sapUiTinyMarginBeginEnd"
+                            icon="sap-icon://cart"
+                            type="Default"
+                            text="Ir a pedidos"
+                            press="todetallesdelproducto">
+                        </Button>
                     </Toolbar>
 		            </subHeader>
                     <Toolbar class="sapUiMediumMarginTop" id="toolbar1">
 			        <SearchField width="100%" placeholder="Buscar"/>
 		            </Toolbar>
-                <List
-                    id="tableproductos"
-                    items="{/list_productos}"
-                    headerText="Productos"
-                    mode="MultiSelect"
-                    inset="false">
-                    <ObjectListItem
-                        title="{ProductName}"
-                        type="Active"
-                        press="press">
-                        <firstStatus>
-                            <ObjectStatus
-                                text="{ExtendedPrice}"/>
-                        </firstStatus>
-                    </ObjectListItem>
-                </List>
+                    <List
+                        id="tableproductos"
+                        items="{/list_productos}"
+                        headerText="Productos"
+                        mode="MultiSelect"
+                        inset="false">
+                        <ObjectListItem
+                            title="{ProductName}"
+                            type="Active"
+                            press="press">
+                            <firstStatus>
+                                <ObjectStatus
+                                    text="{ExtendedPrice}"/>
+                            </firstStatus>
+                        </ObjectListItem>
+                    </List>
                 </Page>    
-                <Page id="ListaPreciosDetail"
-                    title="Lista de Precios"
-                    backgroundDesign= "Solid"
-                    showNavButton="{= !${device>/system/desktop} }"
-                    navButtonPress=".onPressDetailBack">
+                    <Page id="ListaPreciosDetail"
+                        title="Lista de Precios"
+                        backgroundDesign= "Solid"
+                        showNavButton="{= !${device>/system/desktop} }"
+                        navButtonPress=".onPressDetailBack">
 
-                    <tab:Table
-                        id="tableTomaPedidos"
-                        selectionMode="MultiToggle"
-                        visibleRowCount="7"
-                        enableSelectAll="false"
-                        rows="{
-                            path: '/table_listaprecios'
-                        }"
-                        threshold="15"
-                        enableBusyIndicator="true"
-                        ariaLabelledBy="title">
-                        <tab:extension>
-                            <OverflowToolbar style="Clear">
-                                <Title id="titlePrecios" text="Lista de Precios"/>
-                                <ToolbarSpacer/>
-                                <OverflowToolbar>
+                        <tab:Table
+                            id="tableTomaPedidos"
+                            selectionMode="MultiToggle"
+                            visibleRowCount="7"
+                            enableSelectAll="false"
+                            rows="{
+                                path: '/table_listaprecios'
+                            }"
+                            threshold="15"
+                            enableBusyIndicator="true"
+                            ariaLabelledBy="title">
+                            <tab:extension>
+                                <OverflowToolbar style="Clear">
+                                    <Title id="titlePrecios" text="Lista de Precios"/>
                                     <ToolbarSpacer/>
-                                    <SearchField search="onSearch" width="17.5rem"/>
+                                    <OverflowToolbar>
+                                        <ToolbarSpacer/>
+                                        <SearchField search="onSearch" width="17.5rem"/>
+                                    </OverflowToolbar>
+                                    <Button   icon="sap-icon://sort" press="onSort"/>
+                                    <Button  icon="sap-icon://donut-chart" press="onDonut"/>
+                                    <Button icon="sap-icon://filter" press="onFiltert"/>
+                                    <Button icon="sap-icon://add" press="onAdd"/>
+                                    <Button
+                                        icon="sap-icon://refresh"
+                                        tooltip="Reinitialize Model"
+                                        press="onModelRefresh"/>
+                                    
+                                    <Button id="cutPrecios" text="More" press="onMore"/>
                                 </OverflowToolbar>
-                                <Button   icon="sap-icon://sort" press="onSort"/>
-                                <Button  icon="sap-icon://donut-chart" press="onDonut"/>
-                                <Button icon="sap-icon://filter" press="onFiltert"/>
-                                <Button icon="sap-icon://add" press="onAdd"/>
-                                <Button
-                                    icon="sap-icon://refresh"
-                                    tooltip="Reinitialize Model"
-                                    press="onModelRefresh"/>
-                                
-                                <Button id="cutPrecios" text="More" press="onMore"/>
-                            </OverflowToolbar>
-                        </tab:extension>
-                        <tab:columns>
-                            <tab:Column
-                                sortProperty="Name"
-                                filterProperty="Name"
-                                autoResizable="true"
-                                width="11rem">
-                                <Label text="Nombre" />
-                                <tab:template>
-                                    <Link
-                                        text="{name}"
-                                        press="todatalistaprecios" />
-                                </tab:template>
-                            </tab:Column>
-                            <tab:Column
-                                sortProperty="Moneda"
-                                filterProperty="Moneda"
-                                autoResizable="true"
-                                width="11rem">
-                                <Label text="Moneda" />
-                                <tab:template>
-                                    <Text text="{moneda}" wrapping="false" />
-                                </tab:template>
-                            </tab:Column>
-                            <tab:Column
-                                sortProperty="From"
-                                filterProperty="From"
-                                autoResizable="true"
-                                width="11rem">
-                                <Label text="Valido desde" />
-                                <tab:template>
-                                    <Text text="{from}" wrapping="false" />
-                                </tab:template>
-                            </tab:Column>
-                            <tab:Column
-                                sortProperty="Until"
-                                filterProperty="Until"
-                                autoResizable="true"
-                                width="11rem">
-                                <Label text="Valido hasta" />
-                                <tab:template>
-                                    <Text text="{until}" wrapping="false" />
-                                </tab:template>
-                            </tab:Column>
-                            <tab:Column
-                                sortProperty="ProductID"
-                                filterProperty="ProductID"
-                                autoResizable="true"
-                                width="6rem">
-                            </tab:Column>
-                        </tab:columns>
-                        <tab:footer>
-                            <OverflowToolbar id="infobarPrecios">
-                                <SegmentedButton
-                                    id="operationModePrecios"
-                                    selectionChange="onOperationModeChange"
-                                    selectedKey="{ui>selectedOperationMode}"
-                                    items="{ui>/operationModes}">
-                                    <items>
-                                        <SegmentedButtonItem text="{ui>name}" key="{ui>name}"/>
-                                    </items>
-                                </SegmentedButton>
-                            </OverflowToolbar>
-                        </tab:footer>
-                    </tab:Table>
-                    
-                </Page>
-                        <Page id="DataListaPreciosDetail"
-                            title="Dato seleccionado"
-                            backgroundDesign= "Solid"
-                            showNavButton="{= !${device>/system/desktop} }"
-                            navButtonPress=".onPressDetailBack">
-                            <content>
-                                <VBox fitContainer="true">
-                                    <f:SimpleForm id="SimpleFormDisplay480DataListaPrecios"
-                                        minWidth="1024"
-                                        maxContainerCols="2"
-                                        editable="false"
-                                        layout="ResponsiveGridLayout"
-                                        title="Registro seleccionado"
-                                        labelSpanL="4"
-                                        labelSpanM="4"
-                                        emptySpanL="0"
-                                        emptySpanM="0"
-                                        columnsL="2"
-                                        columnsM="2">
-                                        <f:content>
-                                            <core:Title text="" />
-                                            <Label text="Nombre" />
-                                            <Text text="lista de precios 202102" />
-                                            <Label text="Valido desde" />
-                                            <Text text="1/2/2021 " />
-                                            <Label text="hasta" />
-                                            <Text text="28/2/2021" />
-                                            <core:Title text="" />
-                                            <Label text="Moneda" />
-                                            <Text text="Peso Boliviano" />
-                                        </f:content>
-                                        <f:layoutData>
-                                            <FlexItemData shrinkFactor="0" backgroundDesign="Solid" styleClass="sapContrastPlus"/>
-                                        </f:layoutData>
-                                    </f:SimpleForm>
-                                    <IconTabBar upperCase="true" expandable="false" applyContentPadding="true" stretchContentHeight="true" class="sapUiResponsiveContentPadding">
-                                       
-                                        <content>
-                                            <tab:Table
-                                                id="tableDataListaPrecios"
-                                                selectionMode="MultiToggle"
-                                                visibleRowCount="7"
-                                                enableSelectAll="false"
-                                                rows="{
-                                                    path: '/table_datalistaprecios'
-                                                }"
-                                                threshold="15"
-                                                enableBusyIndicator="true"
-                                                ariaLabelledBy="title">
-                                                <tab:extension>
-                                                </tab:extension>
-                                                <tab:columns>
-                                                    <tab:Column
-                                                        sortProperty="Codproducto"
-                                                        filterProperty="Codproducto"
-                                                        autoResizable="true"
-                                                        width="11rem">
-                                                        <Label text="Codigo del producto" />
-                                                        <tab:template>
-                                                            <Text text="{codproducto}" wrapping="false" />
-                                                        </tab:template>
-                                                    </tab:Column>
-                                                    <tab:Column
-                                                        sortProperty="Description"
-                                                        filterProperty="Description"
-                                                        autoResizable="true"
-                                                        width="11rem">
-                                                        <Label text="Descripcion" />
-                                                        <tab:template>
-                                                            <Text text="{description}" wrapping="false" />
-                                                        </tab:template>
-                                                    </tab:Column>
-                                                    <tab:Column
-                                                        sortProperty="Monto"
-                                                        filterProperty="Monto"
-                                                        autoResizable="true"
-                                                        width="11rem">
-                                                        <Label text="Monto" />
-                                                        <tab:template>
-                                                            <Text text="{monto}" wrapping="false" />
-                                                        </tab:template>
-                                                    </tab:Column>
-                                                    <tab:Column
-                                                        sortProperty="Preciounidad"
-                                                        filterProperty="Preciounidad"
-                                                        autoResizable="true"
-                                                        width="11rem">
-                                                        <Label text="Precio por unidad" />
-                                                        <tab:template>
-                                                            <Text text="{preciounidad}" wrapping="false" />
-                                                        </tab:template>
-                                                    </tab:Column>
-                                                    <tab:Column
-                                                        sortProperty="ProductID"
-                                                        filterProperty="ProductID"
-                                                        autoResizable="true"
-                                                        width="6rem">
-                                                    </tab:Column>
-                                                </tab:columns>
-                                            </tab:Table>
-                                        </content>
-                                        <layoutData>
-                                            <FlexItemData growFactor="1" baseSize="0%"/>
-                                        </layoutData>
-                                    </IconTabBar>
-                                </VBox>
-                            </content>
+                            </tab:extension>
+                            <tab:columns>
+                                <tab:Column
+                                    sortProperty="Name"
+                                    filterProperty="Name"
+                                    autoResizable="true"
+                                    width="11rem">
+                                    <Label text="Nombre" />
+                                    <tab:template>
+                                        <Link
+                                            text="{name}"
+                                            press="todatalistaprecios" />
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column
+                                    sortProperty="Moneda"
+                                    filterProperty="Moneda"
+                                    autoResizable="true"
+                                    width="11rem">
+                                    <Label text="Moneda" />
+                                    <tab:template>
+                                        <Text text="{moneda}" wrapping="false" />
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column
+                                    sortProperty="From"
+                                    filterProperty="From"
+                                    autoResizable="true"
+                                    width="11rem">
+                                    <Label text="Valido desde" />
+                                    <tab:template>
+                                        <Text text="{from}" wrapping="false" />
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column
+                                    sortProperty="Until"
+                                    filterProperty="Until"
+                                    autoResizable="true"
+                                    width="11rem">
+                                    <Label text="Valido hasta" />
+                                    <tab:template>
+                                        <Text text="{until}" wrapping="false" />
+                                    </tab:template>
+                                </tab:Column>
+                                <tab:Column
+                                    sortProperty="ProductID"
+                                    filterProperty="ProductID"
+                                    autoResizable="true"
+                                    width="6rem">
+                                </tab:Column>
+                            </tab:columns>
+                            <tab:footer>
+                                <OverflowToolbar id="infobarPrecios">
+                                    <SegmentedButton
+                                        id="operationModePrecios"
+                                        selectionChange="onOperationModeChange"
+                                        selectedKey="{ui>selectedOperationMode}"
+                                        items="{ui>/operationModes}">
+                                        <items>
+                                            <SegmentedButtonItem text="{ui>name}" key="{ui>name}"/>
+                                        </items>
+                                    </SegmentedButton>
+                                </OverflowToolbar>
+                            </tab:footer>
+                        </tab:Table>
+                        
+                    </Page>
+                            <Page id="DataListaPreciosDetail"
+                                title="Dato seleccionado"
+                                backgroundDesign= "Solid"
+                                showNavButton="{= !${device>/system/desktop} }"
+                                navButtonPress=".onPressDetailBack">
+                                <content>
+                                    <VBox fitContainer="true">
+                                        <f:SimpleForm id="SimpleFormDisplay480DataListaPrecios"
+                                            minWidth="1024"
+                                            maxContainerCols="2"
+                                            editable="false"
+                                            layout="ResponsiveGridLayout"
+                                            title="Registro seleccionado"
+                                            labelSpanL="4"
+                                            labelSpanM="4"
+                                            emptySpanL="0"
+                                            emptySpanM="0"
+                                            columnsL="2"
+                                            columnsM="2">
+                                            <f:content>
+                                                <core:Title text="" />
+                                                <Label text="Nombre" />
+                                                <Text text="lista de precios 202102" />
+                                                <Label text="Valido desde" />
+                                                <Text text="1/2/2021 " />
+                                                <Label text="hasta" />
+                                                <Text text="28/2/2021" />
+                                                <core:Title text="" />
+                                                <Label text="Moneda" />
+                                                <Text text="Peso Boliviano" />
+                                            </f:content>
+                                            <f:layoutData>
+                                                <FlexItemData shrinkFactor="0" backgroundDesign="Solid" styleClass="sapContrastPlus"/>
+                                            </f:layoutData>
+                                        </f:SimpleForm>
+                                        <IconTabBar upperCase="true" expandable="false" applyContentPadding="true" stretchContentHeight="true" class="sapUiResponsiveContentPadding">
+                                        
+                                            <content>
+                                                <tab:Table
+                                                    id="tableDataListaPrecios"
+                                                    selectionMode="MultiToggle"
+                                                    visibleRowCount="7"
+                                                    enableSelectAll="false"
+                                                    rows="{
+                                                        path: '/table_datalistaprecios'
+                                                    }"
+                                                    threshold="15"
+                                                    enableBusyIndicator="true"
+                                                    ariaLabelledBy="title">
+                                                    <tab:extension>
+                                                    </tab:extension>
+                                                    <tab:columns>
+                                                        <tab:Column
+                                                            sortProperty="Codproducto"
+                                                            filterProperty="Codproducto"
+                                                            autoResizable="true"
+                                                            width="11rem">
+                                                            <Label text="Codigo del producto" />
+                                                            <tab:template>
+                                                                <Text text="{codproducto}" wrapping="false" />
+                                                            </tab:template>
+                                                        </tab:Column>
+                                                        <tab:Column
+                                                            sortProperty="Description"
+                                                            filterProperty="Description"
+                                                            autoResizable="true"
+                                                            width="11rem">
+                                                            <Label text="Descripcion" />
+                                                            <tab:template>
+                                                                <Text text="{description}" wrapping="false" />
+                                                            </tab:template>
+                                                        </tab:Column>
+                                                        <tab:Column
+                                                            sortProperty="Monto"
+                                                            filterProperty="Monto"
+                                                            autoResizable="true"
+                                                            width="11rem">
+                                                            <Label text="Monto" />
+                                                            <tab:template>
+                                                                <Text text="{monto}" wrapping="false" />
+                                                            </tab:template>
+                                                        </tab:Column>
+                                                        <tab:Column
+                                                            sortProperty="Preciounidad"
+                                                            filterProperty="Preciounidad"
+                                                            autoResizable="true"
+                                                            width="11rem">
+                                                            <Label text="Precio por unidad" />
+                                                            <tab:template>
+                                                                <Text text="{preciounidad}" wrapping="false" />
+                                                            </tab:template>
+                                                        </tab:Column>
+                                                        <tab:Column
+                                                            sortProperty="ProductID"
+                                                            filterProperty="ProductID"
+                                                            autoResizable="true"
+                                                            width="6rem">
+                                                        </tab:Column>
+                                                    </tab:columns>
+                                                </tab:Table>
+                                            </content>
+                                            <layoutData>
+                                                <FlexItemData growFactor="1" baseSize="0%"/>
+                                            </layoutData>
+                                        </IconTabBar>
+                                    </VBox>
+                                </content>
 
-                        </Page>
+                            </Page>
+
+                            <Page id="DetallesDelProducto"
+                                title="Detalles del producto"
+                                backgroundDesign= "Solid"
+                                showNavButton="{= !${device>/system/desktop} }"
+                                navButtonPress=".onPressDetailBack">
+                                <subHeader>
+                                <Toolbar>
+                                    <Button type="Back" tooltip="Back" press="backtoclientes"/>
+                                    <ToolbarSpacer/>
+                                    <Title text="Pedido" level="H3"/>
+                                    <ToolbarSpacer/>
+                                </Toolbar>
+                                </subHeader>
+                                <Toolbar class="sapUiMediumMarginTop" id="toolbar3">
+                                    <Label  text="Texto de cabecera:" design="Bold" />
+								    <Input  type="Text" placeholder=" Pedido" width="80%" required="false" class="sapUiSmallMargin" />
+                                </Toolbar>
+
+                                <Table id="idProductsTable"
+                                    mode="Delete"
+                                    inset="false"
+                                    items="{
+                                        path: '/list_productos',
+                                        sorter: {
+                                            path: 'ProductName'
+                                        }
+                                    }">
+                                    <headerToolbar>
+                                        <OverflowToolbar>
+                                            <Title text="Productos" level="H2"/>
+                                        </OverflowToolbar>
+                                    </headerToolbar>
+                                    <columns>
+                                        <Column>
+                                            <Text text="Product" />
+                                        </Column>
+                                        <Column
+                                            minScreenWidth="Tablet"
+                                            demandPopin="true"
+                                            hAlign="Center">
+                                            <Text text="Cantidad" />
+                                        </Column>
+                                        <Column
+                                            hAlign="End">
+                                            <Text text="Precio" />
+                                        </Column>
+                                        <Column
+                                            hAlign="End">
+                                            <Text text="Sub Precio" />
+                                        </Column>
+                                    </columns>
+                                    <items>
+                                        <ColumnListItem vAlign="Middle" type="Navigation">
+                                            <cells>
+                                                <ObjectIdentifier
+                                                    title="{ProductName}"
+                                                    text="{ShipperName}" />
+
+                                                <Input value="{Quantity}" type="{Text}" description="Ud" fieldWidth="{10%}"/>
+
+                                                <ObjectNumber
+                                                    number="{ExtendedPrice}"
+                                                    unit="b$." />
+                                                <ObjectNumber
+                                                    number="{ExtendedPrice}"
+                                                    unit="b$." />
+                                                
+                                            </cells>
+                                        </ColumnListItem>
+                                    </items>
+                                </Table>
+                                <FlexBox
+                                    width="100%"
+                                    alignItems="Start"
+                                    justifyContent="End">
+                                    <Button text="Generar pedido" type="Emphasized" class="sapUiSmallMarginEnd" />
+                                </FlexBox>
+                            </Page>  
                 
 
                 <Page id="ReunionesDetail"

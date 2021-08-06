@@ -67,6 +67,9 @@ sap.ui.define([
                 todatalistaprecios: function(){
                     this.getSplitContObj().to(this.createId("DataListaPreciosDetail"));
                 },
+                    todetallesdelproducto: function(){
+                        this.getSplitContObj().to(this.createId("DetallesDelProducto"));
+                    },
             // navegador de Actividades
             toreuniones: function(){
                 this.getSplitContObj().to(this.createId("ReunionesDetail"));
