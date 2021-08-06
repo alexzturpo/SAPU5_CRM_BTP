@@ -1,3 +1,8 @@
+/* alinear contenido home  */
+.homecenter {
+    align-items: center;
+    padding: 25px !important;
+}
 /* Enter your custom styles here */
 .sapMBarTitleAlignAuto .sapMBarPH {
     justify-content: center !important;

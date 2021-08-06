@@ -27,14 +27,15 @@
                     showNavButton="{= !${device>/system/desktop} }"
                     navButtonPress=".onPressDetailBack">
 
-                    <l:VerticalLayout width="100%">
-                            <l:content>
-                                <VBox class="sapUiSmallMargin" width="100%" >
-                                     <Title level="H2" titleStyle="H2" text="Bienvenidos a tu portal CRM!" width="100%" />
-                                     <Image src="../img/homefondo.jpg" width="{/imageWidth}" height="30rem" />
-                                </VBox>
-                            </l:content>
-                    </l:VerticalLayout>
+                    <FlexBox class="sapUiSmallMargin homecenter"
+                    width="100%"
+                    direction="Column">
+                        <items>
+                            <Title level="H2" titleStyle="H2" text="Bienvenidos a tu portal CRM!"  textAlign="Center"/>
+                            <Image src="../img/homefondo.jpg" width="auto" height="30rem" />
+                        </items>
+                    </FlexBox>
+                                
                 </Page>
                 <Page id="CuentasDetail"
                     title="Cuentas"
@@ -3042,74 +3043,48 @@
                     title="Rutas de vendedor"
                     backgroundDesign= "Solid"
                     showNavButton="{= !${device>/system/desktop} }"
-                    navButtonPress=".onPressDetailBack">	
+                    navButtonPress=".onPressDetailBack">
 
-                    <l:VerticalLayout  width="100%">
-                        <l:BlockLayout background="{/selectedBackground}">
-                            <l:BlockLayoutRow accentCells="Vendedor" >
-                                <l:BlockLayoutCell
-                                    id="Vendedor"
-                                    title="Vendedor">
-                                    <Select
-                                        forceSelection="false"
-                                        selectedKey="Seleccione"
-                                        items="{
-                                            path: '/list_select',
-                                            sorter: { path: 'vendedor' }
-                                        }">
-                                        <core:Item key="{listId}" text="{vendedor}" />
-                                        
-                                    </Select>
-                                    
-                                </l:BlockLayoutCell>
-                                <l:BlockLayoutCell 
-                                    title="Fecha">
-                                    <DateTimeInput
-                                    id="date1"
-                                    type="Date"
-                                    width="50%"
-                                    placeholder="Enter Date"
-                                    class="sapUiSmallMargin" /> 
-                                    
-                                </l:BlockLayoutCell>
-                                <l:BlockLayoutCell >
-                                    	<ToolbarSpacer/>
-                                    <Button type="Accept"
+                    <l:VerticalLayout width="100%">
+                            <l:content>
+                            <FlexBox class="sapUiSmallMargin " 	justifyContent="SpaceBetween" alignItems="Center">
+                                    <items>
+                                    <FlexBox alignItems="Center" >
+                                    <VBox class="sapUiSmallMargin">
+                                        <Label text="Vendedor" design="Bold" />
+                                        <Select
+                                            forceSelection="false"
+                                            selectedKey="Seleccione"
+                                            items="{
+                                                path: '/list_select',
+                                                sorter: { path: 'vendedor' }
+                                            }">
+                                            <core:Item key="{listId}" text="{vendedor}" />
+                                        </Select>
+                                    </VBox>
+                                    <VBox class="sapUiSmallMargin">
+                                        <Label text="Fecha" design="Bold" />
+                                        <DateTimeInput
+                                        id="date1"
+                                        type="Date"
+                                        width="100%"
+                                        placeholder="Enter Date" /> 
+                                    </VBox>
+                                    </FlexBox>
+                                    <VBox class="sapUiSmallMargin" >
+                                        <Button type="Accept"
                                         text="Ir"
-                                        press="onPress"
-                                        width="70%"
-                                        ariaDescribedBy="acceptButtonDescription genericButtonDescription"/>
-                                </l:BlockLayoutCell>
-                            </l:BlockLayoutRow> 
-
-                            <l:BlockLayoutRow >
-                                <l:BlockLayoutCell>
+                                        press="onPress"/>
+                                    </VBox>
                                     
-                                    <vbm:AnalyticMap legendVisible="true" width="100%" height="30rem">
-                                        <vbm:resources>
-                                            <vbm:Resource name="PinGreen.png" src="test-resources/sap/ui/vbm/demokit/media/images/Green_Pin.png"></vbm:Resource>
-                                            <vbm:Resource name="PinGrey.png" src="test-resources/sap/ui/vbm/demokit/media/images/Grey_Pin.png"></vbm:Resource>
-                                            <vbm:Resource name="PinOrange.png" src="test-resources/sap/ui/vbm/demokit/media/images/Orange_Pin.png"></vbm:Resource>
-                                            <vbm:Resource name="PinRed.png" src="test-resources/sap/ui/vbm/demokit/media/images/Red_Pin.png"></vbm:Resource>
-                                        </vbm:resources>
-                                        <vbm:vos>
-                                            
-                                            <vbm:Spots>
-                                                <vbm:Spot id="wdfSpot" position="-77.0282400;-12.0431800;0" click="onClickItem" contextMenu="onContextMenuItem">
-                                                    <vbm:tooltip>
-                                                        <commons:RichTooltip text="125 Productos" title="Productos"
-                                                            imageSrc="http://go.sap.com/dam/application/shared/logos/sap-logo.png.adapt.72_36.false.png"/>
-                                                    </vbm:tooltip>
-                                                </vbm:Spot>
-                                            </vbm:Spots>
-                                        </vbm:vos>
-                                    </vbm:AnalyticMap>
-                                       
-                                </l:BlockLayoutCell>
-                            </l:BlockLayoutRow> 
-                        
-                        </l:BlockLayout>
-                    </l:VerticalLayout>
+                                    </items>
+                            </FlexBox>
+                            <VBox class="sapUiResponsiveMargin">
+                                <Image src="../img/Imagen1.png" width="100%"  />
+                            </VBox>
+                            </l:content>
+                    </l:VerticalLayout>	
+                    
                 </Page>
                 <Page id="MonitoreoCampoDetail"
                     title="Visualización de monitoreo de campos (Enfermedades, Plagas, Maleza)"
@@ -3117,73 +3092,56 @@
                     showNavButton="{= !${device>/system/desktop} }"
                     navButtonPress=".onPressDetailBack">	
 
-                    <l:VerticalLayout  width="100%">
-                        <l:BlockLayout background="{/selectedBackground}">
-                            <l:BlockLayoutRow accentCells="Zona" >
-                                <l:BlockLayoutCell
-                                    id="ZonaMonitoreo"
-                                    title="Zona">
-                                    <Select
-                                        forceSelection="false"
-                                        selectedKey="Seleccione"
-                                        items="{
-                                            path: '/list_select',
-                                            sorter: { path: 'vendedor' }
-                                        }">
-                                        <core:Item key="{listId}" text="{vendedor}" /> 
-                                    </Select> 
-                                </l:BlockLayoutCell>
-                                <l:BlockLayoutCell
-                                    id="haciendaMonitoreo"
-                                    title="Hacienda">
-                                    <Select
-                                        forceSelection="false"
-                                        selectedKey="Seleccione"
-                                        items="{
-                                            path: '/list_select',
-                                            sorter: { path: 'vendedor' }
-                                        }">
-                                        <core:Item key="{listId}" text="{vendedor}" /> 
-                                    </Select> 
-                                </l:BlockLayoutCell>
-                                <l:BlockLayoutCell >
-                                    	<ToolbarSpacer/>
-                                    <Button type="Accept"
-                                        text="Ir"
-                                        press="onPress"
-                                        width="70%"
-                                        ariaDescribedBy="acceptButtonDescription genericButtonDescription"/>
-                                </l:BlockLayoutCell>
-                            </l:BlockLayoutRow> 
-
-                            <l:BlockLayoutRow >
-                                <l:BlockLayoutCell>
+                    <l:VerticalLayout width="100%">
+                            <l:content>
+                            <FlexBox class="sapUiSmallMargin " 	justifyContent="SpaceBetween" alignItems="Center">
+                                    <items>
+                                    <FlexBox alignItems="Center" >
+                                    <VBox class="sapUiSmallMargin">
+                                        <Label text="Zona" design="Bold" />
+                                        <Select
+                                            forceSelection="false"
+                                            selectedKey="Seleccione"
+                                            items="{
+                                                path: '/list_select',
+                                                sorter: { path: 'vendedor' }
+                                            }">
+                                            <core:Item key="{listId}" text="{vendedor}" />
+                                        </Select>
+                                    </VBox>
+                                    <VBox class="sapUiSmallMargin">
+                                        <Label text="Hacienda" design="Bold" />
+                                        <Select
+                                            forceSelection="false"
+                                            selectedKey="Seleccione"
+                                            items="{
+                                                path: '/list_select',
+                                                sorter: { path: 'vendedor' }
+                                            }">
+                                            <core:Item key="{listId}" text="{vendedor}" />
+                                        </Select>
+                                    </VBox>
                                     
-                                    <vbm:AnalyticMap legendVisible="true" width="100%" height="30rem">
-                                        <vbm:resources>
-                                            <vbm:Resource name="PinGreen.png" src="test-resources/sap/ui/vbm/demokit/media/images/Green_Pin.png"></vbm:Resource>
-                                            <vbm:Resource name="PinGrey.png" src="test-resources/sap/ui/vbm/demokit/media/images/Grey_Pin.png"></vbm:Resource>
-                                            <vbm:Resource name="PinOrange.png" src="test-resources/sap/ui/vbm/demokit/media/images/Orange_Pin.png"></vbm:Resource>
-                                            <vbm:Resource name="PinRed.png" src="test-resources/sap/ui/vbm/demokit/media/images/Red_Pin.png"></vbm:Resource>
-                                        </vbm:resources>
-                                        <vbm:vos>
-                                            
-                                            <vbm:Spots>
-                                                <vbm:Spot id="wdfSpotMonitoreo" position="-77.0282400;-12.0431800;0" click="onClickItem" contextMenu="onContextMenuItem">
-                                                    <vbm:tooltip>
-                                                        <commons:RichTooltip text="125 Productos" title="Productos"
-                                                            imageSrc="http://go.sap.com/dam/application/shared/logos/sap-logo.png.adapt.72_36.false.png"/>
-                                                    </vbm:tooltip>
-                                                </vbm:Spot>
-                                            </vbm:Spots>
-                                        </vbm:vos>
-                                    </vbm:AnalyticMap>
-                                       
-                                </l:BlockLayoutCell>
-                            </l:BlockLayoutRow> 
-                        
-                        </l:BlockLayout>
-                    </l:VerticalLayout>
+                                    </FlexBox>
+                                    <VBox class="sapUiSmallMargin" >
+                                        <Button type="Accept"
+                                        text="Ir"
+                                        press="onPress"/>
+                                        <Link
+                                        text="Ocultar barra de filtros"
+                                        press="todatagrupoobjs" />
+                                        <Link
+                                        text="Filtros"
+                                        press="todatagrupoobjs" />
+                                    </VBox>
+                                    
+                                    </items>
+                            </FlexBox>
+                            <VBox class="sapUiResponsiveMargin">
+                                <Image src="../img/Imagen2.png" width="100%"  />
+                            </VBox>
+                            </l:content>
+                    </l:VerticalLayout>	
                 </Page>
                 <Page id="VistaEntidadesDetail"
                     title="Visualización de entidades geográficas de cultivos "
@@ -3191,73 +3149,56 @@
                     showNavButton="{= !${device>/system/desktop} }"
                     navButtonPress=".onPressDetailBack">	
 
-                    <l:VerticalLayout  width="100%">
-                        <l:BlockLayout background="{/selectedBackground}">
-                            <l:BlockLayoutRow accentCells="Zona" >
-                                <l:BlockLayoutCell
-                                    id="ZonaVistaEntidades"
-                                    title="Zona">
-                                    <Select
-                                        forceSelection="false"
-                                        selectedKey="Seleccione"
-                                        items="{
-                                            path: '/list_select',
-                                            sorter: { path: 'vendedor' }
-                                        }">
-                                        <core:Item key="{listId}" text="{vendedor}" /> 
-                                    </Select> 
-                                </l:BlockLayoutCell>
-                                <l:BlockLayoutCell
-                                    id="haciendaVistaEntidades"
-                                    title="Hacienda">
-                                    <Select
-                                        forceSelection="false"
-                                        selectedKey="Seleccione"
-                                        items="{
-                                            path: '/list_select',
-                                            sorter: { path: 'vendedor' }
-                                        }">
-                                        <core:Item key="{listId}" text="{vendedor}" /> 
-                                    </Select> 
-                                </l:BlockLayoutCell>
-                                <l:BlockLayoutCell >
-                                    	<ToolbarSpacer/>
-                                    <Button type="Accept"
-                                        text="Ir"
-                                        press="onPress"
-                                        width="70%"
-                                        ariaDescribedBy="acceptButtonDescription genericButtonDescription"/>
-                                </l:BlockLayoutCell>
-                            </l:BlockLayoutRow> 
-
-                            <l:BlockLayoutRow >
-                                <l:BlockLayoutCell>
+                    <l:VerticalLayout width="100%">
+                            <l:content>
+                            <FlexBox class="sapUiSmallMargin " 	justifyContent="SpaceBetween" alignItems="Center">
+                                    <items>
+                                    <FlexBox alignItems="Center" >
+                                    <VBox class="sapUiSmallMargin">
+                                        <Label text="Zona" design="Bold" />
+                                        <Select
+                                            forceSelection="false"
+                                            selectedKey="Seleccione"
+                                            items="{
+                                                path: '/list_select',
+                                                sorter: { path: 'vendedor' }
+                                            }">
+                                            <core:Item key="{listId}" text="{vendedor}" />
+                                        </Select>
+                                    </VBox>
+                                    <VBox class="sapUiSmallMargin">
+                                        <Label text="Hacienda" design="Bold" />
+                                        <Select
+                                            forceSelection="false"
+                                            selectedKey="Seleccione"
+                                            items="{
+                                                path: '/list_select',
+                                                sorter: { path: 'vendedor' }
+                                            }">
+                                            <core:Item key="{listId}" text="{vendedor}" />
+                                        </Select>
+                                    </VBox>
                                     
-                                    <vbm:AnalyticMap legendVisible="true" width="100%" height="30rem">
-                                        <vbm:resources>
-                                            <vbm:Resource name="PinGreen.png" src="test-resources/sap/ui/vbm/demokit/media/images/Green_Pin.png"></vbm:Resource>
-                                            <vbm:Resource name="PinGrey.png" src="test-resources/sap/ui/vbm/demokit/media/images/Grey_Pin.png"></vbm:Resource>
-                                            <vbm:Resource name="PinOrange.png" src="test-resources/sap/ui/vbm/demokit/media/images/Orange_Pin.png"></vbm:Resource>
-                                            <vbm:Resource name="PinRed.png" src="test-resources/sap/ui/vbm/demokit/media/images/Red_Pin.png"></vbm:Resource>
-                                        </vbm:resources>
-                                        <vbm:vos>
-                                            
-                                            <vbm:Spots>
-                                                <vbm:Spot id="wdfSpotVistaEntidades" position="-77.0282400;-12.0431800;0" click="onClickItem" contextMenu="onContextMenuItem">
-                                                    <vbm:tooltip>
-                                                        <commons:RichTooltip text="125 Productos" title="Productos"
-                                                            imageSrc="http://go.sap.com/dam/application/shared/logos/sap-logo.png.adapt.72_36.false.png"/>
-                                                    </vbm:tooltip>
-                                                </vbm:Spot>
-                                            </vbm:Spots>
-                                        </vbm:vos>
-                                    </vbm:AnalyticMap>
-                                       
-                                </l:BlockLayoutCell>
-                            </l:BlockLayoutRow> 
-                        
-                        </l:BlockLayout>
-                    </l:VerticalLayout>
+                                    </FlexBox>
+                                    <VBox class="sapUiSmallMargin" >
+                                        <Button type="Accept"
+                                        text="Ir"
+                                        press="onPress"/>
+                                        <Link
+                                        text="Ocultar barra de filtros"
+                                        press="todatagrupoobjs" />
+                                        <Link
+                                        text="Filtros"
+                                        press="todatagrupoobjs" />
+                                    </VBox>
+                                    
+                                    </items>
+                            </FlexBox>
+                            <VBox class="sapUiResponsiveMargin">
+                                <Image src="../img/Imagen3.png" width="100%"  />
+                            </VBox>
+                            </l:content>
+                    </l:VerticalLayout>	
                 </Page>
 
 
@@ -3327,35 +3268,42 @@
                     showNavButton="{= !${device>/system/desktop} }"
                     navButtonPress=".onPressDetailBack">
                     
-                    <l:BlockLayout >
-                        <l:BlockLayoutRow >
-                            <l:BlockLayoutCell
-                                id="VendedorHaciendaAcciones"
-                                title="Vendedor">
-                                <Select
-                                    forceSelection="false"
-                                    selectedKey="Seleccione"
-                                    items="{
-                                        path: '/list_select',
-                                        sorter: { path: 'vendedor' }
-                                    }">
-                                    <core:Item key="{listId}" text="{vendedor}" />
-                                </Select>
-                            </l:BlockLayoutCell>
-                            <l:BlockLayoutCell 
-                                title="Fecha">
-                                <DateTimeInput
-                                id="HaciendaAccionesdate1"
-                                type="Date"
-                                width="50%"
-                                placeholder="Enter Date"
-                                class="sapUiSmallMargin" />
-                            </l:BlockLayoutCell>
-                        </l:BlockLayoutRow> 
-                        <l:BlockLayoutRow>
-                            <l:BlockLayoutCell>
-                                
-                                <tab:Table
+                     <l:VerticalLayout width="100%">
+                            <l:content>
+                            <FlexBox class="sapUiSmallMargin " 	justifyContent="Start" alignItems="Center">
+                                    <items>
+                                    <VBox class="sapUiSmallMargin">
+                                        <Label text="Vendedor" design="Bold" />
+                                        <Select
+                                            forceSelection="false"
+                                            selectedKey="Seleccione"
+                                            items="{
+                                                path: '/list_select',
+                                                sorter: { path: 'vendedor' }
+                                            }">
+                                            <core:Item key="{listId}" text="{vendedor}" />
+                                        </Select>
+                                    </VBox>
+                                    <VBox class="sapUiSmallMargin">
+                                        <Label text="Fecha Inicial" design="Bold" />
+                                        <DateTimeInput
+                                        id="date1reporte"
+                                        type="Date"
+                                        width="100%"
+                                        placeholder="Enter Date" /> 
+                                    </VBox>
+                                    <VBox class="sapUiSmallMargin">
+                                        <Label text="Fecha Final" design="Bold" />
+                                        <DateTimeInput
+                                        id="date2reporte"
+                                        type="Date"
+                                        width="100%"
+                                        placeholder="Enter Date" /> 
+                                    </VBox>
+                                    </items>
+                            </FlexBox>
+                            <VBox class="sapUiResponsiveMargin">
+                                 <tab:Table
                                     id="tableHaciendaAcciones"
                                     selectionMode="Single"
                                     visibleRowCount="7"
@@ -3449,56 +3397,50 @@
                                         
                                     </tab:columns>
                                 </tab:Table>
-                                        
-                            </l:BlockLayoutCell>
-                        </l:BlockLayoutRow>                      
-
-                        
-                    </l:BlockLayout>
+                            </VBox>
+                            </l:content>
+                    </l:VerticalLayout>	
                 </Page>
                 <Page id="EstadisticaDetail"
                     title="Estadísticas de visitas y rutas"
                     backgroundDesign= "Solid"
                     showNavButton="{= !${device>/system/desktop} }"
                     navButtonPress=".onPressDetailBack">
-                    
-                    <l:BlockLayout>
-                        <l:BlockLayoutRow >
-                            <l:BlockLayoutCell
-                                id="VendedorEstadistica"
-                                title="Vendedor">
-                                <Select
-                                    forceSelection="false"
-                                    selectedKey="Seleccione"
-                                    items="{
-                                        path: '/list_select',
-                                        sorter: { path: 'vendedor' }
-                                    }">
-                                    <core:Item key="{listId}" text="{vendedor}" />
-                                </Select>
-                            </l:BlockLayoutCell>
-                            <l:BlockLayoutCell 
-                                title="Fecha inicial">
-                                <DateTimeInput
-                                id="Estadisticadate1"
-                                type="Date"
-                                width="70%"
-                                placeholder="Enter Date"
-                                class="sapUiSmallMargin" />
-                            </l:BlockLayoutCell>
-                            <l:BlockLayoutCell 
-                                title="Fecha final">
-                                <DateTimeInput
-                                id="Estadisticadate2"
-                                type="Date"
-                                width="70%"
-                                placeholder="Enter Date"
-                                class="sapUiSmallMargin" />
-                            </l:BlockLayoutCell>
-                        </l:BlockLayoutRow>
-                        <l:BlockLayoutRow>
-                            <l:BlockLayoutCell>
-                                
+                     <l:VerticalLayout width="100%">
+                            <l:content>
+                            <FlexBox class="sapUiSmallMargin " 	justifyContent="Start" alignItems="Center">
+                                    <items>
+                                    <VBox class="sapUiSmallMargin">
+                                        <Label text="Vendedor" design="Bold" />
+                                        <Select
+                                            forceSelection="false"
+                                            selectedKey="Seleccione"
+                                            items="{
+                                                path: '/list_select',
+                                                sorter: { path: 'vendedor' }
+                                            }">
+                                            <core:Item key="{listId}" text="{vendedor}" />
+                                        </Select>
+                                    </VBox>
+                                    <VBox class="sapUiSmallMargin">
+                                        <Label text="Fecha Inicial" design="Bold" />
+                                        <DateTimeInput
+                                        id="date1Estadistica"
+                                        type="Date"
+                                        width="100%"
+                                        placeholder="Enter Date" /> 
+                                    </VBox>
+                                    <VBox class="sapUiSmallMargin">
+                                        <Label text="Fecha Final" design="Bold" />
+                                        <DateTimeInput
+                                        id="date2Estadistica"
+                                        type="Date"
+                                        width="100%"
+                                        placeholder="Enter Date" /> 
+                                    </VBox>
+                                    </items>
+                            </FlexBox>
+                            <VBox class="sapUiResponsiveMargin">
                                 <tab:Table
                                     id="tableEstadistica"
                                     selectionMode="Single"
@@ -3562,45 +3504,41 @@
                                         
                                     </tab:columns>
                                 </tab:Table>
-                                        
-                            </l:BlockLayoutCell>
-                        </l:BlockLayoutRow>                      
-
-                        
-                    </l:BlockLayout>
+                            </VBox>
+                            </l:content>
+                    </l:VerticalLayout>	
                 </Page>
                 <Page id="VisualizacionDetail"
                     title="Visualización de cliente, mora y crédito disponible"
                     backgroundDesign= "Solid"
                     showNavButton="{= !${device>/system/desktop} }"
                     navButtonPress=".onPressDetailBack">
-                    
-                    <l:BlockLayout>
-                        <l:BlockLayoutRow >
-                            <l:BlockLayoutCell
-                                id="VendedorVisualizacion"
-                                title="Vendedor">
-                                <Select
-                                    forceSelection="false"
-                                    selectedKey="Seleccione"
-                                    items="{
-                                        path: '/list_visualizacion',
-                                        sorter: { path: 'vendedor' }
-                                    }">
-                                    <core:Item key="{listId}" text="{vendedor}" />
-                                </Select>
-                            </l:BlockLayoutCell> 
-                        </l:BlockLayoutRow>
-                        <l:BlockLayoutRow>
-                            <l:BlockLayoutCell>
-                                
+                    <l:VerticalLayout width="100%">
+                            <l:content>
+                            <FlexBox class="sapUiSmallMargin " 	justifyContent="Start" alignItems="Center">
+                                    <items>
+                                    <VBox class="sapUiSmallMargin">
+                                        <Label text="Cliente" design="Bold" />
+                                        <Select
+                                            forceSelection="false"
+                                            selectedKey="Seleccione"
+                                            items="{
+                                                path: '/list_select',
+                                                sorter: { path: 'vendedor' }
+                                            }">
+                                            <core:Item key="{listId}" text="{vendedor}" />
+                                        </Select>
+                                    </VBox> 
+                                    </items>
+                            </FlexBox>
+                            <VBox class="sapUiResponsiveMargin">
                                 <tab:Table
                                     id="tableVisualizacion"
                                     selectionMode="Single"
                                     visibleRowCount="7"
                                     enableSelectAll="false"
                                     rows="{
-                                        path: '/table_reuniones'
+                                        path: '/list_visualizacion'
                                     }"
                                     threshold="15"
                                     enableBusyIndicator="true"
@@ -3620,7 +3558,7 @@
                                             width="16rem">
                                             <Label text="Cliente" />
                                             <tab:template>
-                                                <Text text="{maincontact}" wrapping="false" />
+                                                <Text text="{accounts}" wrapping="false" />
                                             </tab:template>
                                         </tab:Column>
                                         <tab:Column
@@ -3646,12 +3584,10 @@
                                         
                                     </tab:columns>
                                 </tab:Table>
-                                        
-                            </l:BlockLayoutCell>
-                        </l:BlockLayoutRow>                      
-
-                        
-                    </l:BlockLayout>
+                            </VBox>
+                            </l:content>
+                    </l:VerticalLayout>	
+                    
                 </Page>
 
             </detailPages>
