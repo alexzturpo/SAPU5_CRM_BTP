@@ -9,6 +9,16 @@ sap.ui.define([
 
 		return Controller.extend("salescloud.controller.Home", {
 			onInit: function () {
+                var fechaayer = new Date();
+                fechaayer.setDate(fechaayer.getDate() - 1);
+
+                this.byId("date1").setDateValue(new Date());
+                this.byId("date1reporte").setDateValue(new Date());
+                this.byId("date2reporte").setDateValue(new Date());
+                this.byId("date1Estadistica").setDateValue(fechaayer);
+                this.byId("date2Estadistica").setDateValue(new Date());
+                this.byId("date1Visualizacion").setDateValue(new Date("2021-01-01"));
+                this.byId("date2Visualizacion").setDateValue(new Date("2021-08-08"));
             
             },
             //  saltos de paneles 

@@ -21,7 +21,7 @@
         
             <tnt:ToolHeader >
                 <Image src="test-resources/sap/tnt/images/SAP_Logo.png" />
-                <Text text="Name of the Tool" wrapping="false" />
+                <Text text="CRM BTP" wrapping="false" />
                 <ToolbarSpacer />
                 <Button icon="sap-icon://search" type="Transparent" />
                 <Button icon="sap-icon://history" type="Transparent" />
@@ -197,16 +197,16 @@
                                         <f:content>
                                             <core:Title text="" />
                                             <Label text="Estado" />
-                                            <Text text="True" />
+                                            <Text text="Activo" />
                                             <Label text="Nombre" />
-                                            <Text text="Sidoney Stoney" />
+                                            <Text text="Cuenta " />
                                             <Label text="Dirección" />
-                                            <Text text="Project Manager" />
+                                            <Text text="Santa Cruz" />
                                             <core:Title text="" />
                                             <Label text="Telefono" />
                                             <Text text="840-113-5072" />
                                             <Label text="Web" />
-                                            <Text text="ww.sstoney.com" />
+                                            <Text text="www.Company.com" />
                                         </f:content>
                                         <f:layoutData>
                                             <FlexItemData shrinkFactor="0" backgroundDesign="Solid" styleClass="sapContrastPlus"/>
@@ -236,7 +236,7 @@
                                                 ariaLabelledBy="title">
                                                 <tab:extension>
                                                     <OverflowToolbar style="Clear">
-                                                            <Title  text="Mienbros de mesa"/>
+                                                            <Title  text="Mienbros de la cuenta"/>
                                                             <ToolbarSpacer/>
                                                     </OverflowToolbar>
                                                 </tab:extension>
@@ -374,7 +374,7 @@
                         ariaLabelledBy="title">
                         <tab:extension>
                             <OverflowToolbar style="Clear">
-                                <Title id="titleContacto" text="Contractos"/>
+                                <Title id="titleContacto" text="Contactos"/>
                                 <ToolbarSpacer/>
                                 <OverflowToolbar>
                                     <ToolbarSpacer/>
@@ -606,7 +606,7 @@
 
                 </Page>
                 <Page id="GruposObjetivosDetail"
-                    title="Grupos Objetivos"
+                    title="Grupo Objetivo"
                     backgroundDesign= "Solid"
                     showNavButton="{= !${device>/system/desktop} }"
                     navButtonPress=".onPressDetailBack">
@@ -623,7 +623,7 @@
                         ariaLabelledBy="title">
                         <tab:extension>
                             <OverflowToolbar style="Clear">
-                                <Title id="titleGrupos" text="Grupos Objetivos"/>
+                                <Title id="titleGrupos" text="Grupo Objetivo"/>
                                 <ToolbarSpacer/>
                                 <OverflowToolbar>
                                     <ToolbarSpacer/>
@@ -696,16 +696,7 @@
                                     <Text text="{state}" wrapping="false" />
                                 </tab:template>
                             </tab:Column>
-                            <tab:Column
-                                sortProperty="Id"
-                                filterProperty="Id"
-                                autoResizable="Id"
-                                width="11rem">
-                                <Label text="Id" />
-                                <tab:template>
-                                    <Text text="{id}" wrapping="false" />
-                                </tab:template>
-                            </tab:Column>
+                            
                             <tab:Column
                                 sortProperty="ProductID"
                                 filterProperty="ProductID"
@@ -751,18 +742,16 @@
                                         <f:content>
                                             <core:Title text="" />
                                             <Label text="Nombre" />
-                                            <Text text="Recruiter" />
+                                            <Text text="Grupo objetivo sector agrícola" />
                                             <Label text="Creado por" />
-                                            <Text text="Wye" />
+                                            <Text text="Julio Lira" />
                                             <Label text="Cambiado por" />
-                                            <Text text="Thieme" />
+                                            <Text text="Julio Lira" />
                                             <core:Title text="" />
                                             <Label text="Total" />
-                                            <Text text="2" />
+                                            <Text text="10" />
                                             <Label text="Estado" />
-                                            <Text text="false" />
-                                            <Label text="Id" />
-                                            <Text text="2" />
+                                            <Text text="Activo" />
                                         </f:content>
                                         <f:layoutData>
                                             <FlexItemData shrinkFactor="0" backgroundDesign="Solid" styleClass="sapContrastPlus"/>
@@ -789,16 +778,7 @@
                                                 <tab:extension>
                                                 </tab:extension>
                                                 <tab:columns>
-                                                    <tab:Column
-                                                        sortProperty="Idcuenta"
-                                                        filterProperty="Idcuenta"
-                                                        autoResizable="true"
-                                                        width="11rem">
-                                                        <Label text="ID Cuenta" />
-                                                        <tab:template>
-                                                            <Text text="{idcuenta}" wrapping="false" />
-                                                        </tab:template>
-                                                    </tab:Column>
+                                                    
                                                     <tab:Column
                                                         sortProperty="Namecuenta"
                                                         filterProperty="Namecuenta"
@@ -2700,7 +2680,7 @@
 
                 </Page>
                 <Page id="VistasDetail"
-                    title="Planificador de rutas de vistas"
+                    title="Planificador de rutas de visitas"
                     backgroundDesign= "Solid"
                     showNavButton="{= !${device>/system/desktop} }"
                     navButtonPress=".onPressDetailBack">
@@ -2717,7 +2697,7 @@
                         ariaLabelledBy="title">
                         <tab:extension>
                             <OverflowToolbar style="Clear">
-                                <Title id="titleVistas" text="Vistas"/>
+                                <Title id="titleVistas" text="Visitas"/>
                                 <ToolbarSpacer/>
                                 <OverflowToolbar>
                                     <ToolbarSpacer/>
@@ -2843,14 +2823,14 @@
                                         <f:content>
                                             <core:Title text="" />
                                             <Label text="Nombre" />
-                                            <Text text="Aluminum" />
+                                            <Text text="Ruta 20210110 Willie McKimm" />
                                             <Label text="Valido desde" />
-                                            <Text text="12/3/2020 " />
+                                            <Text text="10/01/2021 " />
                                             <Label text="hasta" />
-                                            <Text text="3/20/2021" />
+                                            <Text text="11/01/2021" />
                                             <core:Title text="" />
                                             <Label text="Moneda" />
-                                            <Text text="Soles" />
+                                            <Text text="Peso boliviano" />
                                         </f:content>
                                         <f:layoutData>
                                             <FlexItemData shrinkFactor="0" backgroundDesign="Solid" styleClass="sapContrastPlus"/>
@@ -3111,10 +3091,10 @@
                                 sortProperty="Aviso"
                                 filterProperty="Aviso"
                                 autoResizable="true"
-                                width="11rem">
+                                width="18rem">
                                 <Label text="Generar comunicación de aviso" />
                                 <tab:template>
-                                    <Text text="{aviso}" wrapping="false" />
+                                    <Button text="Generar" press="onMore"/>
                                 </tab:template>
                             </tab:Column>
                             <tab:Column
@@ -3149,14 +3129,14 @@
 
                     <l:VerticalLayout width="100%">
                             <l:content>
-                            <FlexBox class="sapUiSmallMargin " 	justifyContent="SpaceBetween" alignItems="Center">
+                            <FlexBox class="sapUiSmallMargin " 	justifyContent="Inherit" alignItems="Center">
                                     <items>
                                     <FlexBox alignItems="Center" >
                                     <VBox class="sapUiSmallMargin">
                                         <Label text="Vendedor" design="Bold" />
                                         <Select
                                             forceSelection="false"
-                                            selectedKey="Seleccione"
+                                            selectedKey="1"
                                             items="{
                                                 path: '/list_select',
                                                 sorter: { path: 'vendedor' }
@@ -3174,7 +3154,7 @@
                                     </VBox>
                                     </FlexBox>
                                     <VBox class="sapUiSmallMargin" >
-                                        <Button type="Accept"
+                                        <Button 
                                         text="Ir"
                                         press="onPress"/>
                                     </VBox>
@@ -3196,14 +3176,14 @@
 
                     <l:VerticalLayout width="100%">
                             <l:content>
-                            <FlexBox class="sapUiSmallMargin " 	justifyContent="SpaceBetween" alignItems="Center">
+                            <FlexBox class="sapUiSmallMargin " 	justifyContent="Inherit" alignItems="Center">
                                     <items>
                                     <FlexBox alignItems="Center" >
                                     <VBox class="sapUiSmallMargin">
                                         <Label text="Zona" design="Bold" />
                                         <Select
                                             forceSelection="false"
-                                            selectedKey="Seleccione"
+                                            selectedKey="1"
                                             items="{
                                                 path: '/list_select',
                                                 sorter: { path: 'vendedor' }
@@ -3215,7 +3195,7 @@
                                         <Label text="Hacienda" design="Bold" />
                                         <Select
                                             forceSelection="false"
-                                            selectedKey="Seleccione"
+                                            selectedKey="2"
                                             items="{
                                                 path: '/list_select',
                                                 sorter: { path: 'vendedor' }
@@ -3226,15 +3206,11 @@
                                     
                                     </FlexBox>
                                     <VBox class="sapUiSmallMargin" >
-                                        <Button type="Accept"
-                                        text="Ir"
-                                        press="onPress"/>
-                                        <Link
-                                        text="Ocultar barra de filtros"
-                                        press="todatagrupoobjs" />
-                                        <Link
-                                        text="Filtros"
-                                        press="todatagrupoobjs" />
+                                         <FlexBox alignItems="Center" >
+                                        <Button class="sapUiTinyMargin" text="Ir" press="onPress"/>
+                                        <Link  class="sapUiTinyMargin" text="Ocultar barra de filtros" press="todatagrupoobjs" />
+                                        <Link  class="sapUiTinyMargin" text="Filtros" press="todatagrupoobjs" />
+                                         </FlexBox >
                                     </VBox>
                                     
                                     </items>
@@ -3253,14 +3229,14 @@
 
                     <l:VerticalLayout width="100%">
                             <l:content>
-                            <FlexBox class="sapUiSmallMargin " 	justifyContent="SpaceBetween" alignItems="Center">
+                            <FlexBox class="sapUiSmallMargin " 	justifyContent="Inherit" alignItems="Center">
                                     <items>
                                     <FlexBox alignItems="Center" >
                                     <VBox class="sapUiSmallMargin">
                                         <Label text="Zona" design="Bold" />
                                         <Select
                                             forceSelection="false"
-                                            selectedKey="Seleccione"
+                                            selectedKey="2"
                                             items="{
                                                 path: '/list_select',
                                                 sorter: { path: 'vendedor' }
@@ -3272,7 +3248,7 @@
                                         <Label text="Hacienda" design="Bold" />
                                         <Select
                                             forceSelection="false"
-                                            selectedKey="Seleccione"
+                                            selectedKey="2"
                                             items="{
                                                 path: '/list_select',
                                                 sorter: { path: 'vendedor' }
@@ -3283,15 +3259,11 @@
                                     
                                     </FlexBox>
                                     <VBox class="sapUiSmallMargin" >
-                                        <Button type="Accept"
-                                        text="Ir"
-                                        press="onPress"/>
-                                        <Link
-                                        text="Ocultar barra de filtros"
-                                        press="todatagrupoobjs" />
-                                        <Link
-                                        text="Filtros"
-                                        press="todatagrupoobjs" />
+                                         <FlexBox alignItems="Center" >
+                                        <Button class="sapUiTinyMargin" text="Ir" press="onPress"/>
+                                        <Link  class="sapUiTinyMargin" text="Ocultar barra de filtros" press="todatagrupoobjs" />
+                                        <Link  class="sapUiTinyMargin" text="Filtros" press="todatagrupoobjs" />
+                                         </FlexBox >
                                     </VBox>
                                     
                                     </items>
@@ -3336,13 +3308,13 @@
                                     </tab:extension>
                                     <tab:columns>
                                         <tab:Column
-                                            sortProperty="Nommbre"
-                                            filterProperty="Nommbre"
+                                            sortProperty="Nombre"
+                                            filterProperty="Nombre"
                                             autoResizable="true"
                                             width="25rem">
-                                            <Label text="Nommbre" />
+                                            <Label text="Nombre" />
                                             <tab:template>
-                                                <Text text="{accounts}" wrapping="false" />
+                                                <Text text="{nombre}" wrapping="false" />
                                             </tab:template>
                                         </tab:Column>
                                         <tab:Column
@@ -3378,7 +3350,7 @@
                                         <Label text="Vendedor" design="Bold" />
                                         <Select
                                             forceSelection="false"
-                                            selectedKey="Seleccione"
+                                            selectedKey="1"
                                             items="{
                                                 path: '/list_select',
                                                 sorter: { path: 'vendedor' }
@@ -3446,13 +3418,13 @@
                                             </tab:template>
                                         </tab:Column>
                                         <tab:Column
-                                            sortProperty="Nommbre"
-                                            filterProperty="Nommbre"
+                                            sortProperty="Nombre"
+                                            filterProperty="Nombre"
                                             autoResizable="true"
                                             width="11rem">
-                                            <Label text="Nommbre" />
+                                            <Label text="Nombre" />
                                             <tab:template>
-                                                <Text text="{accounts}" wrapping="false" />
+                                                <Text text="{asunto}" wrapping="false" />
                                             </tab:template>
                                         </tab:Column>
                                         <tab:Column
@@ -3516,7 +3488,7 @@
                                         <Label text="Vendedor" design="Bold" />
                                         <Select
                                             forceSelection="false"
-                                            selectedKey="Seleccione"
+                                            selectedKey="3"
                                             items="{
                                                 path: '/list_select',
                                                 sorter: { path: 'vendedor' }
@@ -3563,11 +3535,11 @@
                                     </tab:extension>
                                     <tab:columns>
                                         <tab:Column
-                                            sortProperty="Nommbre"
-                                            filterProperty="Nommbre"
+                                            sortProperty="Nombre"
+                                            filterProperty="Nombre"
                                             autoResizable="true"
                                             width="11rem">
-                                            <Label text="Nommbre" />
+                                            <Label text="Nombre" />
                                             <tab:template>
                                                 <Text text="{maincontact}" wrapping="false" />
                                             </tab:template>
@@ -3621,16 +3593,32 @@
                                     <items>
                                     <VBox class="sapUiSmallMargin">
                                         <Label text="Cliente" design="Bold" />
-                                        <Select
-                                            forceSelection="false"
-                                            selectedKey="Seleccione"
-                                            items="{
-                                                path: '/list_select',
-                                                sorter: { path: 'vendedor' }
-                                            }">
-                                            <core:Item key="{listId}" text="{vendedor}" />
-                                        </Select>
+                                        <Input value="Cliente 1" type="text" description="" fieldWidth="{100%}"/>
+                                        
                                     </VBox> 
+                                    <VBox class="sapUiSmallMargin">
+                                        <Label text="Fecha Inicial" design="Bold" />
+                                        <DateTimeInput
+                                        id="date1Visualizacion"
+                                        type="Date"
+                                        width="100%"
+                                        placeholder="Enter Date" /> 
+                                    </VBox>
+                                    <VBox class="sapUiSmallMargin">
+                                        <Label text="Fecha Final" design="Bold" />
+                                        <DateTimeInput
+                                        id="date2Visualizacion"
+                                        type="Date"
+                                        width="100%"
+                                        placeholder="Enter Date" /> 
+                                    </VBox>
+                                    <VBox class="sapUiSmallMargin" >
+                                         <FlexBox alignItems="Center" >
+                                        <Button class="sapUiTinyMargin" text="Ir" press="onPress"/>
+                                        <Link  class="sapUiTinyMargin" text="Ocultar barra de filtros" press="todatagrupoobjs" />
+                                        <Link  class="sapUiTinyMargin" text="Filtros" press="todatagrupoobjs" />
+                                         </FlexBox >
+                                    </VBox>
                                     </items>
                             </FlexBox>
                             <VBox class="sapUiResponsiveMargin">
